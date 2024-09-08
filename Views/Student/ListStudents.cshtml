@@ -1,0 +1,46 @@
+﻿@{
+    ViewData["Title"] = "Students";
+}
+@model List<OfficeMangement.Models.Entities.StudentEntity>
+<link href="~/css/darkthemewithmovingparticles.css" rel="stylesheet" />
+<link href="~/css/tabledesign.css" rel="stylesheet" />
+<div>
+    <!--dust particel-->
+    <div class="margin-body">
+
+        <div>
+            <div class="starsec"></div>
+            <div class="starthird"></div>
+            <div class="starfourth"></div>
+            <div class="starfifth"></div>
+        </div>
+        <div class="container">
+            <div class="table-wrapper">
+                <table class="fl-table">
+                    <thead>
+                        <tr>
+                            <th width="210px">Id</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th width="150px"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var student in Model)
+                        {
+                            <tr>
+                                <td>@student.Id</td>
+                                <td>@student.Name</td>
+                                <td>@student.Email</td>
+                                <td>
+                                    <a asp-controller="Student" asp-action="EditStudent" asp-route-id="@student.Id" class="btn btn-primary">Edit</a>
+                                    <a asp-controller="Student" asp-action="DeleteStudent" asp-route-id="@student.Id" class="btn btn-danger">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
