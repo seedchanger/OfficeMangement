@@ -65,16 +65,16 @@ namespace OfficeMangement.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> DeleteStudent(StudentEntity studentEntity)
+        public async Task<IActionResult> DeleteStudent(Guid id)
         {
-            var stud = await _dbContext.Students.FindAsync(studentEntity.Id);
+            var stud = await _dbContext.Students.FindAsync(id);
             if (stud != null)
             {
-                 _dbContext.Students.Remove(studentEntity);
+                 _dbContext.Students.Remove(stud);
                 await _dbContext.SaveChangesAsync();
 
             }
-            return RedirectToAction("Student", "ListStudents");
+            return RedirectToAction("ListStudents", "Student");
         }
     }
 }
